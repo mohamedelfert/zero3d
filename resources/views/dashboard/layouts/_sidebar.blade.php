@@ -2,13 +2,13 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar sidebar-scroll">
     <div class="main-sidebar-header active">
-        <a class="desktop-logo logo-light active" href="{{ url('/' . $page='home') }}"><img
+        <a class="desktop-logo logo-light active" href="{{ url('/' . $page='dashboard/index') }}"><img
                 src="{{ setting()->logo_path }}" class="main-logo" alt="logo"></a>
-        <a class="desktop-logo logo-dark active" href="{{ url('/' . $page='home') }}"><img
+        <a class="desktop-logo logo-dark active" href="{{ url('/' . $page='dashboard/index') }}"><img
                 src="{{ setting()->logo_path }}" class="main-logo dark-theme" alt="logo"></a>
-        <a class="logo-icon mobile-logo icon-light active" href="{{ url('/' . $page='home') }}"><img
+        <a class="logo-icon mobile-logo icon-light active" href="{{ url('/' . $page='dashboard/index') }}"><img
                 src="{{ setting()->logo_path }}" class="logo-icon" alt="logo"></a>
-        <a class="logo-icon mobile-logo icon-dark active" href="{{ url('/' . $page='home') }}"><img
+        <a class="logo-icon mobile-logo icon-dark active" href="{{ url('/' . $page='dashboard/index') }}"><img
                 src="{{ setting()->logo_path }}" class="logo-icon dark-theme" alt="logo"></a>
     </div>
     <div class="main-sidemenu">
@@ -31,6 +31,16 @@
                     <span class="side-menu__label">@lang('main.dashboard')</span>
                 </a>
             </li>
+
+            @can('category-list')
+                <li class="side-item side-item-category">@lang('main.categories')</li>
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('dashboard.categories.index') }}">
+                        <i class="side-menu__icon fa fa-list"></i>
+                        <span class="side-menu__label">@lang('main.categories')</span>
+                    </a>
+                </li>
+            @endcan
 
             @can('user-list')
                 <li class="side-item side-item-category">@lang('main.users_permissions')</li>

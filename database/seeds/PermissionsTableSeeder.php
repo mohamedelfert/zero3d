@@ -103,6 +103,36 @@ class PermissionsTableSeeder extends Seeder
                 'display_name' => 'الرئيسيه',
                 'guard_name' => 'web',
                 'routes' => 'dashboard.index',
+            ],[
+                'id' => '17',
+                'name' => 'category-list',
+                'display_name' => 'الاقسام',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.categories.index',
+            ], [
+                'id' => '18',
+                'name' => 'category-create',
+                'display_name' => 'الاقسام',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.categories.create,dashboard.categories.store',
+            ], [
+                'id' => '19',
+                'name' => 'category-edit',
+                'display_name' => 'الاقسام',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.categories.edit,dashboard.categories.update',
+            ], [
+                'id' => '20',
+                'name' => 'category-delete',
+                'display_name' => 'الاقسام',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.categories.destroy',
+            ], [
+                'id' => '21',
+                'name' => 'category-show',
+                'display_name' => 'الاقسام',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.categories.show',
             ],
         ];
 

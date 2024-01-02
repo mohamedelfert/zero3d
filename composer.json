@@ -12,7 +12,7 @@
         "fideloper/proxy": "^4.4.2",
         "fruitcake/laravel-cors": "^2.2.0",
         "guzzlehttp/guzzle": "7.8.0",
-        "intervention/image": "^2.7",
+        "intervention/image": "^2.7.2",
         "laravel/framework": "^8.83.27",
         "laravel/sanctum": "2.15.1",
         "laravel/tinker": "^2.8.2",
@@ -25,9 +25,9 @@
     "require-dev": {
         "facade/ignition": "^2.17.7",
         "fakerphp/faker": "^1.23.0",
-        "mockery/mockery": "^1.6.6",
+        "mockery/mockery": "^1.6.7",
 		"nunomaduro/collision": "^5.11.0",
-        "phpunit/phpunit": "^9.6.13"
+        "phpunit/phpunit": "^9.6.15"
     },
     "config": {
         "optimize-autoloader": true,

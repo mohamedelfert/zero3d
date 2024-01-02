@@ -49,6 +49,15 @@ return [
     'choose_status' => 'Choose Status',
     'choose_role' => 'Choose Role',
 
+    'categories' => 'Categories',
+    'category' => 'Category',
+    'category_details' => 'Category Details',
+    'name' => 'Name',
+    'category_parent' => 'Category Parent',
+    'primary_parent' => 'Primary Parent',
+    'slug' => 'Slug',
+    'archived' => 'Archived',
+
     'delete_msg' => 'Are You Sure About This Delete ?',
     'search_for_anything' => 'Write AnyThing For Search ...',
     'no_data_found' => 'No Data Found At This Time',

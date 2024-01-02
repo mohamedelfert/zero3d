@@ -14,6 +14,9 @@ Route::group(
         /**************************** Dashboard *******************************/
         Route::get('/index', 'DashboardController@index')->name('index');
 
+        /**************************** Categories *******************************/
+        Route::resource('categories', 'CategoryController');
+
         /**************************** Users & Roles *******************************/
         Route::resource('users', 'UserController');
         Route::get('/users/profile/{id}', 'UserController@showProfile')->name('users.showProfile');
