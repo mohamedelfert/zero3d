@@ -58,6 +58,7 @@ return [
     'slug' => 'Slug',
     'archived' => 'Archived',
 
+    'of' => 'Of',
     'delete_msg' => 'Are You Sure About This Delete ?',
     'search_for_anything' => 'Write AnyThing For Search ...',
     'no_data_found' => 'No Data Found At This Time',

@@ -16,12 +16,26 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $title = trans('main.categories');
+//        $categories = Category::leftJoin('categories as parents', 'parents.id', '=', 'categories.parent_id')
+//            ->select([
+//                'categories.*',
+//                'parents.name as parent_name'
+//            ])
+//            ->where(function ($q) use ($request) {
+//                return $q->when($request->search, function ($query) use ($request) {
+//                    return $query->where('name', 'LIKE', '%' . $request->search . '%')
+//                        ->orWhere('slug', 'LIKE', '%' . $request->search . '%')
+//                        ->orWhere('status', 'LIKE', '%' . $request->search . '%');
+//                });
+//            })->latest()->paginate(20);
         $categories = Category::where(function ($q) use ($request) {
             return $q->when($request->search, function ($query) use ($request) {
                 return $query->where('name', 'LIKE', '%' . $request->search . '%')
-                    ->orWhere('slug', 'LIKE', '%' . $request->search . '%');
+                    ->orWhere('slug', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('status', 'LIKE', '%' . $request->search . '%');
             });
         })->latest()->paginate(20);
+//        $categories = Category::active()->latest()->paginate(20);
         return view('dashboard.categories.index', compact('title', 'categories'));
     }
 
@@ -60,7 +74,8 @@ class CategoryController extends Controller
     public function create()
     {
         $title = trans('main.categories');
-        return view('dashboard.categories.create', compact('title'));
+        $category = new Category();
+        return view('dashboard.categories.create', compact('title', 'category'));
     }
 
     public function show(Category $category)
@@ -99,9 +114,9 @@ class CategoryController extends Controller
 
         $data = $request->except(['image']);
 
-        if ($request->image){
+        if ($request->image) {
 
-            if ($category->image){
+            if ($category->image) {
                 Storage::disk('public_uploads')->delete('/images/' . $category->image);
             }
             Image::make($request->image)->resize(300, null, function ($constraint) {

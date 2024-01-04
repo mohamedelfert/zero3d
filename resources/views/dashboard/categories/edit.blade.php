@@ -67,18 +67,19 @@
                         <div class="row row-sm mg-b-20">
                             <div class="col-lg-6">
                                 <p> {{ trans('main.status') }} </p>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status" id="active" value="active" {{ $category->status === 'active' ? 'checked' : ''}}>
-                                    <label class="form-check-label" for="active">
-                                        {{ trans('main.active') }}
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status" id="archived" value="archived" {{ $category->status === 'archived' ? 'checked' : ''}}>
-                                    <label class="form-check-label" for="archived">
-                                        {{ trans('main.archived') }}
-                                    </label>
-                                </div>
+{{--                                <div class="form-check">--}}
+{{--                                    <input class="form-check-input" type="radio" name="status" id="active" value="active" {{ $category->status === 'active' ? 'checked' : ''}}>--}}
+{{--                                    <label class="form-check-label" for="active">--}}
+{{--                                        {{ trans('main.active') }}--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                                <div class="form-check">--}}
+{{--                                    <input class="form-check-input" type="radio" name="status" id="archived" value="archived" {{ $category->status === 'archived' ? 'checked' : ''}}>--}}
+{{--                                    <label class="form-check-label" for="archived">--}}
+{{--                                        {{ trans('main.archived') }}--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+                                <x-form.radio name="status" :checked="$category->status" :options="['active'=>'Active','archived'=>'Archived']"/>
                             </div>
                             <div class="col-lg-6">
                                 <p> {{ trans('main.image') }} </p>

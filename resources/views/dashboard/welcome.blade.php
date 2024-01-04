@@ -189,7 +189,10 @@
                     </div>
 
                     <div class="card-body">
-                        <p>Page content goes here<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                        <p>Page content goes here</p>
+                        <p>
+                            <x-nav/>
+                        </p>
                     </div>
                 </div>
             </div>

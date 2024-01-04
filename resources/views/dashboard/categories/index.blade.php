@@ -31,11 +31,13 @@
                 <div class="card-header pb-0">
                     <div class="box-header with-border">
                         <span style="display: block;margin-bottom:10px">@lang('main.categories') : <small>( {{ $categories->total() }} )</small></span>
-                        <form action="{{ route('dashboard.categories.index') }}" method="get">
+{{--                        <form action="{{ route('dashboard.categories.index') }}" method="get">--}}
+                        <form action="{{ URL::current() }}" method="get">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <input type="text" name="search" class="form-control" value="{{ request()->search }}"
-                                           placeholder="@lang('main.search')">
+{{--                                    <input type="text" name="search" class="form-control" value="{{ request()->search }}"--}}
+{{--                                           placeholder="@lang('main.search')">--}}
+                                    <x-form.input name="search" :value="request()->search" placeholder="search"/>
                                 </div>
                                 <div class="col-md-4">
                                     <button class="btn btn-primary btn-sm" title="@lang('main.search')">
@@ -67,6 +69,7 @@
                                         <th> {{ trans('main.category') }} </th>
                                         <th> {{ trans('main.category_parent') }} </th>
                                         <th> {{ trans('main.slug') }} </th>
+                                        <th> {{ trans('main.status') }} </th>
                                         <th> {{ trans('main.created_at') }} </th>
                                         <th> {{ trans('main.control') }} </th>
                                     </tr>
@@ -76,9 +79,11 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $category->name }}</td>
-                                        <td>{{ $category->parent_id }}</td>
-{{--                                        <td>{{ optional($category->parents)->name }}</td>--}}
+{{--                                        <td>{{ $category->parent_id }}</td>--}}
+{{--                                        <td>{{ $category->parent_name }}</td>--}}
+                                        <td>{{ optional($category->parent)->name ?? '-' }}</td>
                                         <td>{{ $category->slug }}</td>
+                                        <td>{{ $category->status }}</td>
                                         <td>{{ $category->created_at }}</td>
                                         <td>
                                             @if(auth()->user()->hasPermissionTo('category-edit'))
@@ -154,6 +159,7 @@
                                         <th> {{ trans('main.name') }} </th>
                                         <th> {{ trans('main.parent') }} </th>
                                         <th> {{ trans('main.slug') }} </th>
+                                        <th> {{ trans('main.status') }} </th>
                                         <th> {{ trans('main.created_at') }} </th>
                                         <th> {{ trans('main.control') }} </th>
                                     </tr>
@@ -170,4 +176,7 @@
             </div>
         </div>
     </div>
+
+    {{ $categories->withQueryString()->links() }}
+
 @endsection
