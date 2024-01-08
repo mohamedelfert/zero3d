@@ -72,41 +72,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-12 col-md-12 col-lg-12 mt-3">
-                                <div class="table-responsive">
-                                    <table class="table mg-b-0 text-md-nowrap table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th> {{ trans('main.product') }} </th>
-                                                <th> {{ trans('main.store') }} </th>
-                                                <th> {{ trans('main.status') }} </th>
-                                                <th> {{ trans('main.created_at') }} </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @php
-                                            $products = $category->products()->with('store')->latest()->paginate(5);
-                                        @endphp
-                                        @forelse($products as $index => $product)
-                                            <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $product->name }}</td>
-                                                <td>{{ optional($product->store)->name }}</td>
-                                                <td>{{ $product->status }}</td>
-                                                <td>{{ $product->created_at }}</td>
-                                            </tr>
-                                        @empty
-                                            <td colspan="5" class="text-center text-danger">@lang('main.no_data_found')</td>
-                                        @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                {{ $products->links() }}
-
-                            </div>
                         </div>
                     </div>
                 </div>

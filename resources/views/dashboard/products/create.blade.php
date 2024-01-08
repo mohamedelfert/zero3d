@@ -54,20 +54,12 @@
                         <div class="row row-sm mg-b-20">
                             <div class="col-lg-6">
                                 <p> {{ trans('main.category') }} </p>
-{{--                                {!! Form::text('name', old('name'), array('class' => 'form-control','required'=> 'required')) !!}--}}
-                                <x-form.input name="name" placeholder="category"/>
+                                {!! Form::text('name', old('name'), array('class' => 'form-control','required'=> 'required')) !!}
                             </div>
                             <div class="col-lg-6">
                                 <p> {{ trans('main.category_parent') }} </p>
-{{--                                {!! Form::select('parent_id',App\Models\Category::pluck('name','id'),request()->parent_id ?? null,['class'=>'form-control col',--}}
-{{--                                    'placeholder'=>__("main.category_parent")]) !!}--}}
-{{--                                <select name="parent_id" id="parent_id" class="form-control col" required>--}}
-{{--                                    <option value="">@lang('main.category_parent')</option>--}}
-{{--                                    @foreach(App\Models\Category::get() as $category)--}}
-{{--                                        <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-                                <x-form.select name="parent_id" :selected="$category->parent_id" :options="App\Models\Category::pluck('name','id')"/>
+                                {!! Form::select('parent_id',App\Models\Category::pluck('name','id'),request()->parent_id ?? null,['class'=>'form-control col',
+                                    'placeholder'=>__("main.category_parent")]) !!}
                             </div>
                         </div>
                         <div class="row row-sm mg-b-20">

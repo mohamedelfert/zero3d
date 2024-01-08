@@ -17,10 +17,15 @@ Route::group(
         /**************************** Categories *******************************/
         Route::resource('categories', 'CategoryController');
 
+        /**************************** Products *******************************/
+        Route::resource('products', 'ProductController');
+
         /**************************** Users & Roles *******************************/
         Route::resource('users', 'UserController');
         Route::get('/users/profile/{id}', 'UserController@showProfile')->name('users.showProfile');
         Route::patch('/users/profile/{id}', 'UserController@profile')->name('users.profile');
+        Route::get('profile', 'ProfileController@edit')->name('profileData');
+        Route::patch('profile', 'ProfileController@update')->name('editProfileData');
         Route::resource('roles', 'RoleController');
 
         /**************************** Settings *******************************/

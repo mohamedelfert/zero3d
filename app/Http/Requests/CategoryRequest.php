@@ -27,6 +27,8 @@ class CategoryRequest extends FormRequest
         return [
             'name' => [
                 'required',
+                'unique:categories,name,' . $this->id,
+//                Rule::unique('categories', 'name')->ignore($this->id),
                 new Filter(['laravel', 'php', 'html']),
 //                function($attribute, $value, $fails){
 //                    if (strtolower($value) == 'laravel'){

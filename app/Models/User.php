@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return asset('/uploads/users_images/' . $this->image);
     }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id', 'id')->withDefault();
+    }
 }

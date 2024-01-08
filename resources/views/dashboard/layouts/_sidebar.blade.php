@@ -42,6 +42,16 @@
                 </li>
             @endcan
 
+            @can('product-list')
+                <li class="side-item side-item-category">@lang('main.products')</li>
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('dashboard.products.index') }}">
+                        <i class="side-menu__icon fa fa-phone-alt"></i>
+                        <span class="side-menu__label">@lang('main.products')</span>
+                    </a>
+                </li>
+            @endcan
+
             @can('user-list')
                 <li class="side-item side-item-category">@lang('main.users_permissions')</li>
                 @can('user-list')

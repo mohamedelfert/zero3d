@@ -133,6 +133,48 @@ class PermissionsTableSeeder extends Seeder
                 'display_name' => 'الاقسام',
                 'guard_name' => 'web',
                 'routes' => 'dashboard.categories.show',
+            ],[
+                'id' => '22',
+                'name' => 'product-list',
+                'display_name' => 'المنتجات',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.products.index',
+            ], [
+                'id' => '23',
+                'name' => 'product-create',
+                'display_name' => 'المنتجات',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.products.create,dashboard.products.store',
+            ], [
+                'id' => '24',
+                'name' => 'product-edit',
+                'display_name' => 'المنتجات',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.products.edit,dashboard.products.update',
+            ], [
+                'id' => '25',
+                'name' => 'product-delete',
+                'display_name' => 'المنتجات',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.products.destroy',
+            ], [
+                'id' => '26',
+                'name' => 'product-show',
+                'display_name' => 'المنتجات',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.products.show',
+            ],[
+                'id' => '27',
+                'name' => 'profileData',
+                'display_name' => 'المستخدمين',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.profileData',
+            ],[
+                'id' => '28',
+                'name' => 'editProfileData',
+                'display_name' => 'المستخدمين',
+                'guard_name' => 'web',
+                'routes' => 'dashboard.editProfileData',
             ],
         ];
 

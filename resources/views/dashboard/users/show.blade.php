@@ -97,6 +97,9 @@
                                                             <a href="{{ route('dashboard.users.showProfile', $user->id) }}"
                                                                class="btn btn-primary btn-block" title="@lang('main.edit')">
                                                                 <i class="fa fa-edit"> @lang('main.edit') </i></a>
+                                                            <a href="{{ route('dashboard.profileData') }}"
+                                                               class="btn btn-secondary btn-block" title="@lang('main.extra_data')">
+                                                                <i class="fa fa-eye"> @lang('main.extra_data') </i></a>
                                                         @else
                                                             <a class="btn btn-primary btn-block disabled"
                                                                title="@lang('main.edit')"><i class="fa fa-edit"> @lang('main.edit') </i></a>

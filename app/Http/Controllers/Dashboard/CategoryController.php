@@ -28,13 +28,22 @@ class CategoryController extends Controller
 //                        ->orWhere('status', 'LIKE', '%' . $request->search . '%');
 //                });
 //            })->latest()->paginate(20);
-        $categories = Category::where(function ($q) use ($request) {
-            return $q->when($request->search, function ($query) use ($request) {
-                return $query->where('name', 'LIKE', '%' . $request->search . '%')
-                    ->orWhere('slug', 'LIKE', '%' . $request->search . '%')
-                    ->orWhere('status', 'LIKE', '%' . $request->search . '%');
-            });
-        })->latest()->paginate(20);
+        $categories = Category::with('parent')
+            ->where(function ($q) use ($request) {
+                return $q->when($request->search, function ($query) use ($request) {
+                    return $query->where('name', 'LIKE', '%' . $request->search . '%')
+                        ->orWhere('slug', 'LIKE', '%' . $request->search . '%')
+                        ->orWhere('status', 'LIKE', '%' . $request->search . '%');
+                });
+            })
+//            ->withCount('products')
+            ->withCount([
+                'products' => function ($query) {
+                    $query->where('status', '=', 'active');
+                }
+            ])
+            ->latest()
+            ->paginate(20);
 //        $categories = Category::active()->latest()->paginate(20);
         return view('dashboard.categories.index', compact('title', 'categories'));
     }
@@ -61,7 +70,7 @@ class CategoryController extends Controller
         if ($request->image) {
             Image::make($request->image)->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(public_path('uploads/images/' . $request->image->hashName()));
+            })->save(public_path('uploads/categories/' . $request->image->hashName()));
 
             $data['image'] = $request->image->hashName();
         }
@@ -117,11 +126,11 @@ class CategoryController extends Controller
         if ($request->image) {
 
             if ($category->image) {
-                Storage::disk('public_uploads')->delete('/images/' . $category->image);
+                Storage::disk('public_uploads')->delete('/categories/' . $category->image);
             }
             Image::make($request->image)->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(public_path('uploads/images/' . $request->image->hashName()));
+            })->save(public_path('uploads/categories/' . $request->image->hashName()));
 
             $data['image'] = $request->image->hashName();
 
