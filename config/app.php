@@ -82,6 +82,8 @@ return [
 
     'locale' => 'en',
 
+    'currency' => 'USD',
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -231,6 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Currency' => \App\Helpers\Currency::class,
     ],
 
 ];
